@@ -1,0 +1,22 @@
+{namespace com.matthieu.stash.repo.rebasewf}
+
+/**
+ * @param config
+ * @param? errors
+ */
+{template .configForm}
+    {call widget.aui.form.text}
+         {param id: 'references' /}
+         {param initialValue: $config['references'] /}
+         {param labelContent: 'Branches to enforce a rebase workflow.\nAllows grouped commits\n(merge --no-ff)' /}
+         {param description: 'Separate the branch ids using a space. Use Ant regex like refs/master **/release/**' /}
+         {param errorTexts: $errors ? $errors['references'] : null/}
+    {/call}
+    {call widget.aui.form.text}
+         {param id: 'strict_references' /}
+         {param initialValue: $config['strict_references'] /}
+         {param labelContent: 'Branches to enforce a linear history' /}
+         {param description: 'Separate the branch ids using a space. Use Ant regex like refs/master **/release/**' /}
+         {param errorTexts: $errors ? $errors['strict_references'] : null/}
+    {/call}
+{/template}

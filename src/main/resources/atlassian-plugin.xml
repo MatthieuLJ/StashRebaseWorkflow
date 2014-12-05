@@ -1,0 +1,20 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+    </plugin-info>
+
+    <component-import key="commitService" interface="com.atlassian.stash.commit.CommitService"/>
+    <component-import key="gitCmdBuilderFactory" interface="com.atlassian.stash.scm.git.GitCommandBuilderFactory"/>
+
+    <repository-hook key="EnforceRebase" name="Enforce Rebase Workflow" class="com.matthieu.stash.repo.rebasewf.EnforceRebase" public="true">
+        <description>Forbids push to certain branches when they have not been properly rebased</description>
+        <icon>/images/icon.png</icon>
+        <config-form name="Rebase Workflow Enforcer" key="enforceRebase-config">
+          <view>com.matthieu.stash.repo.rebasewf.configForm</view>
+          <directory location="/"/>
+        </config-form>
+    </repository-hook>
+    
+</atlassian-plugin>

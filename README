@@ -1,0 +1,27 @@
+checkRebaseWorkflow Stash plugin
+
+SUMMARY:
+--------
+
+This plugin enforce a continuous / linear history of commits on selected branches.
+
+There are a lot of debates for/against different git workflows. I am of the opinion that the "history" of a branch and where it originated does not hold much value. Beyond that, having a clear linear history of what is going on a specific branch (typically a release branch or master) is very valuable.
+
+Here are a few links discussing some of those aspects:
+http://lwn.net/Articles/328438/
+http://unethicalblogger.com/2010/04/02/a-rebase-based-workflow.html
+http://paul.stadig.name/2010/12/thou-shalt-not-lie-git-rebase-ammend.html
+http://blog.izs.me/post/37650663670/git-rebase
+
+And some also about the specifics of using 'git merge --no-ff' to be able to group commits together:
+http://ariya.ofilabs.com/2013/09/fast-forward-git-merge.html
+http://dev.bizo.com/2014/02/why-we-chose-not-to-git-fast-forward-merge.html
+
+This plugin lets you select the branches where you want to keep a completely linear history (no merge commits at all) and the branches where you want to enforce a rebase workflow (so any merge commit would have one of its immediate parent is also an ancestor in the other branch - in other words, one branch does not contain any commit).
+
+When rejecting a commit, it should be printing enough information to the user as to why the push is being rejected.
+
+TODO:
+-----
+I have been trying to implement some unit test for this plugin. Without much luck so far (https://answers.atlassian.com/questions/11075724/writing-unit-tests-for-stash-plugin-simulate-a-push)
+
