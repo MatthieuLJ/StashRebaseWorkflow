@@ -152,7 +152,7 @@ public class EnforceRebase implements PreReceiveRepositoryHook {
         continue;
       }
       if ((!ref.startsWith("**")) && (!ref.startsWith("refs/"))) {
-        ref = "refs/"+ref;
+        ref = "refs/heads/"+ref;
       }
       if (ref.endsWith("/") || ref.endsWith("\\")) {
         ref = ref + "**";
